@@ -1,0 +1,43 @@
+﻿body {
+    font-family: 'Comic Sans MS';
+    font-weight: bold;
+    background-color: lightblue;
+}
+
+table {
+    text-align: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    margin: 30px;
+    min-width: 350px;
+    display:inline-block;
+}
+div{
+    align-content: center;
+    text-align:center;
+}
+
+button, td {
+    background-color: azure;
+    font-weight: bold;
+    font-family: 'Comic Sans MS';
+    color: darkblue;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+    padding: 5px;
+    height: 80px;
+}
+button {
+    font-size: 30px;
+    max-width: 270px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+td {
+    font-size: 40px;
+    border-radius: 10px 10px 10px 10px;
+    width: 80px;
+}
+
+
+
