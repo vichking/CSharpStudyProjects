@@ -10,12 +10,12 @@ function createTable(): void {
 
     var tbl = document.createElement("table");
     var btn = document.createElement("button");
-    btn.setAttribute("onclick", "play()");
+    btn.setAttribute("onclick", "move()");
     btn.setAttribute("id", "startBtn");
 
     document.getElementById("ticTac").appendChild(tbl);
     document.getElementById("other").appendChild(btn);
-    document.getElementById("startBtn").innerHTML = "Start the Game";
+    document.getElementById("startBtn").innerHTML = "Make A Move";
 
     // ADD NUMBERS TO THE CELLS ======================================
 
@@ -30,36 +30,32 @@ function createTable(): void {
             cell.innerText = `${mispar}`;
         }
     }
+    GameState.Initialize(numberOfDimensions);
 }
 
 
 
-function play() :void {
+function move() :void {
 
-    GameState.Initialize(numberOfDimensions);
+    // HUMAN
+    let cellNumber: number;
+    cellNumber = humanPlayer.getUserInput();
+    document.getElementById("td" + cellNumber).innerHTML = "X";
+    GameState.updateGameState(cellNumber, true);
 
-    while (true) {
-
-        // HUMAN
-
-        if (!GameState.isGameOver) {
-            humanPlayer.MakeMove();
-            
-        }
-        else {
-            alert(GameState.gameResult);
-            break;
-        }
-
-        
-        // AI
-        if (!GameState.isGameOver) {
-            aiPlayer.makeMove();   
-        }
-        else {
-            alert(GameState.gameResult);
-            break;
-        }
+   if (GameState.isGameOver) {
+        document.getElementById("startBtn").setAttribute("disabled", "true");
+        alert(GameState.gameResult);
     }
 
+    // COMPUTER
+    cellNumber = aiPlayer.calculateAiInput();
+    document.getElementById("td" + cellNumber).innerHTML = "O";
+    GameState.updateGameState(cellNumber, false);
+
+    if (GameState.isGameOver) {
+        document.getElementById("startBtn").setAttribute("disabled", "true");
+        alert(GameState.gameResult);
+    }
+ 
 }

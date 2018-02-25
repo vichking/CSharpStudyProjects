@@ -1,11 +1,6 @@
 var AIPlayer = (function () {
     function AIPlayer() {
     }
-    AIPlayer.prototype.makeMove = function () {
-        var cellNumber = this.calculateAiInput();
-        document.getElementById("td" + cellNumber).innerHTML = "O";
-        GameState.updateGameState(cellNumber, false);
-    };
     AIPlayer.prototype.calculateAiInput = function () {
         var lastCellInStrikeNumber = GameState.getLastCellForStrikeNumber();
         if (lastCellInStrikeNumber > 0) {

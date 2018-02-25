@@ -1,13 +1,7 @@
 ﻿class HumanPlayer{    
 
-    public MakeMove() {
-        let cellNumber = this.getUserInput();
-        document.getElementById("td" + cellNumber).innerHTML = "X";
-        GameState.updateGameState(cellNumber, true);
-    }
-    
 
-    private getUserInput(): number {
+    public getUserInput(): number {
         let validCellNumber: number = 0;
         do {
             let inputValue: string = prompt("Enter your move:");

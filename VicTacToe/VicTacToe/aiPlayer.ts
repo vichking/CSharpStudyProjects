@@ -1,13 +1,8 @@
 ﻿class AIPlayer{    
 
 
-    public makeMove(): void {
-        let cellNumber = this.calculateAiInput();
-        document.getElementById("td" + cellNumber).innerHTML = "O";
-        GameState.updateGameState(cellNumber, false);
-    }
 
-    private calculateAiInput(): number {
+    public calculateAiInput(): number {
         let lastCellInStrikeNumber = GameState.getLastCellForStrikeNumber();
         if (lastCellInStrikeNumber>0)
         {

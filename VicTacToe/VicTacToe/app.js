@@ -5,11 +5,11 @@ function createTable() {
     // CREATE HTMLs =================================================
     var tbl = document.createElement("table");
     var btn = document.createElement("button");
-    btn.setAttribute("onclick", "play()");
+    btn.setAttribute("onclick", "move()");
     btn.setAttribute("id", "startBtn");
     document.getElementById("ticTac").appendChild(tbl);
     document.getElementById("other").appendChild(btn);
-    document.getElementById("startBtn").innerHTML = "Start the Game";
+    document.getElementById("startBtn").innerHTML = "Make A Move";
     // ADD NUMBERS TO THE CELLS ======================================
     for (var i = 0; i < numberOfDimensions; i++) {
         var row = document.createElement("tr");
@@ -22,26 +22,25 @@ function createTable() {
             cell.innerText = "" + mispar;
         }
     }
-}
-function play() {
     GameState.Initialize(numberOfDimensions);
-    while (true) {
-        // HUMAN
-        if (!GameState.isGameOver) {
-            humanPlayer.MakeMove();
-        }
-        else {
-            alert(GameState.gameResult);
-            break;
-        }
-        // AI
-        if (!GameState.isGameOver) {
-            aiPlayer.makeMove();
-        }
-        else {
-            alert(GameState.gameResult);
-            break;
-        }
+}
+function move() {
+    // HUMAN
+    var cellNumber;
+    cellNumber = humanPlayer.getUserInput();
+    document.getElementById("td" + cellNumber).innerHTML = "X";
+    GameState.updateGameState(cellNumber, true);
+    if (GameState.isGameOver) {
+        document.getElementById("startBtn").setAttribute("disabled", "true");
+        alert(GameState.gameResult);
+    }
+    // COMPUTER
+    cellNumber = aiPlayer.calculateAiInput();
+    document.getElementById("td" + cellNumber).innerHTML = "O";
+    GameState.updateGameState(cellNumber, false);
+    if (GameState.isGameOver) {
+        document.getElementById("startBtn").setAttribute("disabled", "true");
+        alert(GameState.gameResult);
     }
 }
 //# sourceMappingURL=app.js.map

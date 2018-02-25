@@ -1,11 +1,6 @@
 var HumanPlayer = (function () {
     function HumanPlayer() {
     }
-    HumanPlayer.prototype.MakeMove = function () {
-        var cellNumber = this.getUserInput();
-        document.getElementById("td" + cellNumber).innerHTML = "X";
-        GameState.updateGameState(cellNumber, true);
-    };
     HumanPlayer.prototype.getUserInput = function () {
         var validCellNumber = 0;
         do {

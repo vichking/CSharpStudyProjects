@@ -6,7 +6,7 @@ var GameState = (function () {
         GameState._isGameOver = false;
         GameState._gameResult = "The game is not over yet";
         GameState._takenCells = new Array();
-        for (var i = 0; i <= numberOfDimensions; i++) {
+        for (var i = 0; i <= Math.pow(numberOfDimensions, 2); i++) {
             GameState._takenCells[i] = 0;
         }
         GameState._gameMatrix = new Array();
@@ -93,7 +93,7 @@ var GameState = (function () {
         GameState.updateGameResult();
     };
     GameState.getAvailableCellNumber = function () {
-        for (var i = 1; i < GameState._takenCells.length; i++) {
+        for (var i = 1; i <= GameState._takenCells.length + 1; i++) {
             if (GameState._takenCells[i] == 0)
                 return i;
         }
@@ -136,9 +136,9 @@ var GameState = (function () {
             }
         }
         // CHECK IF THERE IS NO PLACE LEFT
-        if (!GameState._isGameOver && this._takenCells.indexOf(0) == -1) {
+        if (!GameState._isGameOver && GameState._takenCells.filter(function (x) { return x === 0; }).length == 1) {
             GameState._isGameOver = true;
-            GameState._gameResult = "It's a draw, stupid";
+            GameState._gameResult = "It's a draw!";
         }
     };
     return GameState;

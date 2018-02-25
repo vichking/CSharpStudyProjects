@@ -13,7 +13,7 @@
         GameState._gameResult = "The game is not over yet";
         
         GameState._takenCells = new Array<number>();
-        for (let i: number = 0; i <= numberOfDimensions; i++){
+        for (let i: number = 0; i <= Math.pow(numberOfDimensions, 2); i++){
             GameState._takenCells[i] = 0;
         }
 
@@ -91,7 +91,7 @@
     }
 
     public static getAvailableCellNumber(): number {
-        for (let i: number = 1; i < GameState._takenCells.length; i++) {
+        for (let i: number = 1; i <= GameState._takenCells.length + 1; i++) {
             if (GameState._takenCells[i] == 0)
                 return i;
         }
@@ -131,13 +131,13 @@
         for (strike of this._gameMatrix) {
             if (strike.length == this._numberOfDimensions && GameState.areSameValues(strike)) {
                 GameState._isGameOver = true;
-                GameState._gameResult = strike[0] == "0"? "Computer won!" : "You won!"
+                GameState._gameResult = strike[0] == "0" ? "Computer won!" : "You won!";
             }
         }
         // CHECK IF THERE IS NO PLACE LEFT
-        if (!GameState._isGameOver && this._takenCells.indexOf(0) == -1) {
+        if (!GameState._isGameOver && GameState._takenCells.filter(x => x === 0).length == 1) {
             GameState._isGameOver = true;
-            GameState._gameResult = "It's a draw, stupid";
+            GameState._gameResult = "It's a draw!";
         }
     }
 
