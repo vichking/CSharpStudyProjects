@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1AAF5F93-6F92-4A15-83EB-B23B87F76538}"
 	ProjectSection(SolutionItems) = preProject
 		DBScripts.sql = DBScripts.sql
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_BOL", "02_BOL\02_BOL.csproj", "{A7B98C4E-0B82-4DAB-A23C-D46A6AF5CEC7}"
