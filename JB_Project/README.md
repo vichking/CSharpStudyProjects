@@ -18,6 +18,7 @@
  - The user receives "Error + Exception text" message in case the search was aborted for any reason
 
 # Database side
+- The DB name is ProjectDb. Scripts to create the database, tables and stored procedures are part of the project (DBScripts.sql)
 - Every search attempt is recorded to SearchRequests table. It has the following columns: SearchRequestId (PK), SearchString, SearchRootDirectory, IsComplete. One search attempt is one row.
 - Every result is recorded to SearchResults table with the following columns: SearchResultId (PK), SearchRequestId(FK), SearchResultText. Each search attempt can have several results.
 - We use stored procedures to record data to DB.
